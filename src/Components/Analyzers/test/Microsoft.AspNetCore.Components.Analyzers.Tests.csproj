@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(DefaultNetCoreTargetFramework)</TargetFramework>
+
+    <BaseOutputPath />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- This is set to a ProjectReference because analyzers cannot be referenced via Reference.  -->
+    <ProjectReference Include="..\src\Microsoft.AspNetCore.Components.Analyzers.csproj" />
+
+    <Reference Include="Microsoft.AspNetCore.Components" />
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+    <Reference Include="Microsoft.AspNetCore.Analyzer.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(SharedSourceRoot)test\SkipOnHelixAttribute.cs" />
+    <Content Include="TestFiles\**\*.*" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
